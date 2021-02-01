@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+        </div>
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div class="first">
+                    <label ID="first-total" for="">First Class ($150)</label>
+                    <input id="first-count" class="first-class inp-style inp-width-100" type="number" name="">
+                     <button onClick= "handleFlightChange('first',true)" class="btn first-plus">+</button>
+                     <button onClick= "handleFlightChange('first',false)" class= "btn first-minus">-</button>
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label id="economy-total" for="">Economy ($100)</label>
+                    <input id="economy-count" class="economy-class inp-style inp-width-100" type="number" name="">
+                    <button onClick="handleFlightChange('economy',true)"  class="btn economy-plus">+</button>
+                    <button onClick="handleFlightChange('economy',false)"  class="btn economy-minus">-</button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p>$<span class='Subtotal'>500</span></p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$50</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$550</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+    </main>
+    <script>
+         function handleFlightChange(flight,isAdd){
+             const flightInput = document.getElementById(flight + '-count');
+             const flightCount = parseInt(flightInput.value);
+            let  flightNewCount =flightCount;
+            if (isAdd == true){
+                flightNewCount= flightCount + 1;
+             }
+            if (isAdd == false && flightCount > 0){
+                flightNewCount= flightCount - 1;
+              }
+              flightInput.value =flightNewCount;
+              let flightTotal = 0;
+            if (flight == 'economy'){
+                 flightTotal = flightNewCount * 100;
+              }
+            if (flight == 'first'){
+                 flightTotal = flightNewCount * 150;
+              }
+            
+           document.getElementById(flight + '-total').innerText= '$' + flightTotal;
+           calculations();
+           } 
+            
+            
+            
+            function calculations(){
+                const firstInput = document.getElementById('first-count').value;
+                const firstCount = parseInt('parseInput.value');
+
+                const economyInput = document.getElementById('economy-count').value;
+                const economyCount = parseInt('parseInput.value');
+
+                const subTotal = firstCount * 150 + economyCount * 100;
+                document.getElementById('sub-total').innerText = '$' + subTotal;
+            }
+         
+         
+         
+         
+        //  function handleClassChange(isAdd){
+        //     const economyInput = document.getElementById("economy-count");
+        //     const economyCount = parseInt(economyInput.value);
+        //    let  economyNewCount = economyCount;
+        //    if (isAdd == true){
+        //     economyNewCount= economyCount + 1;
+        //      }
+        //     if (isAdd == false && economyCount > 0){
+        //         economyNewCount= economyCount - 1;
+        //      }
+        //      economyInput.value =economyNewCount;
+        //      const economyTotal =economyNewCount * 100;
+        //      document.getElementById("economy-total").innerText= '$' + economyTotal;
+
+        //     }
+
+       
+        
+        
+        
+        //   document.getElementById("economy-break").addEventListener("click",function(){
+        //     const economyInput=document.getElementById("economy-count");
+        //     const economyCount=parseInt(economyInput.value) 
+        //     const economyNewCount = economyCount - 1;
+        //     economyInput.value=economyNewCount;
+        //     const economyTotal =economyNewCount * 100;
+        //     document.getElementById("economy-total").innerText="$" + economyTotal;
+        // })
+          
+        // document.getElementById("economy-add").addEventListener("click",function(){
+        //     const economyInput=document.getElementById("economy-count");
+        //     const economyCount=parseInt(economyInput.value) 
+        //     const economyNewCount = economyCount + 1;
+        //     economyInput.value=economyNewCount;
+        //     const economyTotal =economyNewCount * 100;
+        //     document.getElementById("economy-total").innerText="$" + economyTotal;
+        //   })
+           
+    //   function handleFlightChange(isAdd){
+    //          const firstInput = document.getElementById("first-count");
+    //          const firstCount = parseInt(firstInput.value);
+    //         let  firstNewCount = firstCount;
+    //         if (isAdd == true){
+    //             firstNewCount= firstCount + 1;
+    //          }
+    //         if (isAdd == false && firstCount > 0){
+    //             firstNewCount= firstCount - 1;
+    //           }
+    //         firstInput.value =firstNewCount;
+    //          const firstTotal =firstNewCount * 150;
+    //        document.getElementById("first-total").innerText= '$' + firstTotal;
+    //         }
+           
+           
+//         document.getElementById("first-break").addEventListener("click",function(){
+//             const firstInput = document.getElementById("first-count");
+//             const firstCount = parseInt(firstInput.value);
+//             const firstNewCount= firstCount - 1;
+//             firstInput.value =firstNewCount;
+//             const firstTotal =firstNewCount * 150;
+//             document.getElementById("first-total").innerText= '$' + firstTotal;
+
+//  })
+        
+        //  document.getElementById("first-add").addEventListener("click",function(){
+        //    const firstInput = document.getElementById("first-count");
+        //    const firstCount = parseInt(firstInput.value)
+        //    const firstNewCount= firstCount + 1;
+        //    firstInput.value =firstNewCount;
+        //    const firstTotal =firstNewCount * 150;
+        //    document.getElementById("first-total").innerText= '$' + firstTotal;
+
+            
+        // })
+    </script>
+</body>
+</html>
